@@ -9,7 +9,7 @@ using HarmonyLib;
 
 using MyBhapticsTactsuit;
 
-[assembly: MelonInfo(typeof(GorillaTag_bhaptics.GorillaTag_bhaptics), "GorillaTag_bhaptics", "1.0.0", "Florian Fahrenberger")]
+[assembly: MelonInfo(typeof(GorillaTag_bhaptics.GorillaTag_bhaptics), "GorillaTag_bhaptics", "2.0.0", "Florian Fahrenberger")]
 [assembly: MelonGame("Another Axiom", "Gorilla Tag")]
 
 

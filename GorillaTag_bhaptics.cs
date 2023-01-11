@@ -9,15 +9,18 @@ using HarmonyLib;
 
 using MyBhapticsTactsuit;
 
+[assembly: MelonInfo(typeof(GorillaTag_bhaptics.GorillaTag_bhaptics), "GorillaTag_bhaptics", "1.0.0", "Florian Fahrenberger")]
+[assembly: MelonGame("Another Axiom", "Gorilla Tag")]
+
+
 namespace GorillaTag_bhaptics
 {
     public class GorillaTag_bhaptics : MelonMod
     {
         public static TactsuitVR tactsuitVr;
 
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
-            base.OnApplicationStart();
             tactsuitVr = new TactsuitVR();
             tactsuitVr.PlaybackHaptics("HeartBeat");
         }

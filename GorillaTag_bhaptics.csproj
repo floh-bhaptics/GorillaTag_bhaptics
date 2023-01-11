@@ -31,12 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="bHapticsLib">
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\bHapticsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\MelonLoader.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\MelonLoader.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -55,7 +63,14 @@
   <ItemGroup>
     <Compile Include="GorillaTag_bhaptics.cs" />
     <Compile Include="MyBhapticsTactsuit.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(SolutionDir)bHaptics" "$(TargetDir)\bHaptics\" /S /Y
+XCOPY "$(SolutionDir)Unstrip_system_libraries.bat" "$(TargetDir)\Unstrip_system_libraries.bat" /S /Y
+XCOPY "$(SolutionDir)Managed" "$(TargetDir)\Managed\" /S /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

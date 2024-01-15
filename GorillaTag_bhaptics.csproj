@@ -25,38 +25,70 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Mods\</OutputPath>
+    <OutputPath>D:\Games\Steam\steamapps\common\Gorilla Tag\BepInEx\plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\0Harmony.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\BepInEx\core\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="bHapticsLib">
-      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\bHapticsLib.dll</HintPath>
+    <Reference Include="BepInEx">
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\BepInEx\core\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MelonLoader">
-      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\MelonLoader\net35\MelonLoader.dll</HintPath>
+    <Reference Include="Bhaptics.Tact">
+      <HintPath>libs\Bhaptics.Tact.dll</HintPath>
+    </Reference>
+    <Reference Include="IndexRange, Version=1.0.2.0, Culture=neutral, PublicKeyToken=35e6a3c4212514c6, processorArchitecture=MSIL">
+      <HintPath>packages\IndexRange.1.0.2\lib\net47\IndexRange.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>D:\Games\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WebSocketDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WebSocketDotNet.1.0.0\lib\net45\WebSocketDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -67,10 +99,11 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(SolutionDir)bHaptics" "$(TargetDir)\bHaptics\" /S /Y
-XCOPY "$(SolutionDir)Unstrip_system_libraries.bat" "$(TargetDir)\Unstrip_system_libraries.bat" /S /Y
-XCOPY "$(SolutionDir)Managed" "$(TargetDir)\Managed\" /S /Y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(SolutionDir)libs\bhaptics_library.dll" "$(TargetDir)\" /S /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>

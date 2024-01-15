@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-using MelonLoader;
+using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 
 using MyBhapticsTactsuit;
 
-[assembly: MelonInfo(typeof(GorillaTag_bhaptics.GorillaTag_bhaptics), "GorillaTag_bhaptics", "2.0.0", "Florian Fahrenberger")]
-[assembly: MelonGame("Another Axiom", "Gorilla Tag")]
-
 
 namespace GorillaTag_bhaptics
 {
-    public class GorillaTag_bhaptics : MelonMod
+    [BepInPlugin("org.bepinex.plugins.GorillaTag_bhaptics", "Gorilla Tag bhaptics integration", "3.0.0")]
+    public class Plugin : BaseUnityPlugin
     {
         public static TactsuitVR tactsuitVr;
+#pragma warning disable CS0109 // Remove unnecessary warning
+        internal static new ManualLogSource Log;
+#pragma warning restore CS0109
 
-        public override void OnInitializeMelon()
+        private void Awake()
         {
+            // Make my own logger so it can be accessed from the Tactsuit class
+            Log = base.Logger;
+            // Plugin startup logic
+            Logger.LogMessage("Plugin H3VR_bhaptics is loaded!");
             tactsuitVr = new TactsuitVR();
+            // one startup heartbeat so you know the vest works correctly
             tactsuitVr.PlaybackHaptics("HeartBeat");
+            // patch all functions
+            var harmony = new Harmony("bhaptics.patch.h3vr");
+            harmony.PatchAll();
         }
-        
+
+
         [HarmonyPatch(typeof(GorillaTagger), "UpdateColor", new Type[] { typeof(float), typeof(float), typeof(float) })]
         public class bhaptics_UpdateColor
         {

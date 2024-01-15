@@ -14,7 +14,7 @@ using MyBhapticsTactsuit;
 
 namespace GorillaTag_bhaptics
 {
-    [BepInPlugin("org.bepinex.plugins.GorillaTag_bhaptics", "Gorilla Tag bhaptics integration", "3.0.0")]
+    [BepInPlugin("org.bepinex.plugins.GorillaTag_bhaptics", "Gorilla Tag bhaptics integration", "3.0.1")]
     public class Plugin : BaseUnityPlugin
     {
         public static TactsuitVR tactsuitVr;
@@ -27,12 +27,12 @@ namespace GorillaTag_bhaptics
             // Make my own logger so it can be accessed from the Tactsuit class
             Log = base.Logger;
             // Plugin startup logic
-            Logger.LogMessage("Plugin H3VR_bhaptics is loaded!");
+            Logger.LogMessage("Plugin GorillaTag_bhaptics is loaded!");
             tactsuitVr = new TactsuitVR();
             // one startup heartbeat so you know the vest works correctly
             tactsuitVr.PlaybackHaptics("HeartBeat");
             // patch all functions
-            var harmony = new Harmony("bhaptics.patch.h3vr");
+            var harmony = new Harmony("bhaptics.patch.gorillatag");
             harmony.PatchAll();
         }
 

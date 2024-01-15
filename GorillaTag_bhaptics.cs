@@ -14,7 +14,7 @@ using MyBhapticsTactsuit;
 
 namespace GorillaTag_bhaptics
 {
-    [BepInPlugin("org.bepinex.plugins.GorillaTag_bhaptics", "Gorilla Tag bhaptics integration", "3.0")]
+    [BepInPlugin("org.bepinex.plugins.GorillaTag_bhaptics", "Gorilla Tag bhaptics integration", "3.0.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static TactsuitVR tactsuitVr;
